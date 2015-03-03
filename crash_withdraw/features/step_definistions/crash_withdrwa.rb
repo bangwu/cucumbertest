@@ -1,22 +1,6 @@
-module KnowsMyAccount
-  def my_account
-  	@account ||= Account.new
-  end
-
-  def cash_slot
-	@cash_slot ||= CashSlot.new
-  end
-end
-
-World(KnowsMyAccount)
-
-CAPYURE_A_NUMBER = Transform(/^\d+$/) do |number|
-  number.to_i
-end
-
-Given(/^I have deposited \$(#{CAPYURE_A_NUMBER}) in my account$/) do |amount|
+Given(/^I have credit \$(#{CAPYURE_A_NUMBER}) in my account$/) do |amount|
   @account = Account.new
-  @account.deposite(amount)
+  @account.credit(amount)
   expect(@account.balance).to eql(amount)
 end
 
@@ -27,5 +11,10 @@ end
 
 Then(/^\$(#{CAPYURE_A_NUMBER}) should be dispensed$/) do |amount|
   expect(cash_slot.contents).to eql(amount)
-  expect(@account.balance).to eql(80)
+  
+end
+
+Then(/^the balance of my account should be \$(#{CAPYURE_A_NUMBER})$/) do |amount|
+#  pending # express the regexp above with the code you wish you had
+  expect(@account.balance).to eql(amount)
 end

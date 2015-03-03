@@ -1,5 +1,9 @@
+require 'sinatra'
+get '/' do
+  'Welcome to our nice bank'	
+end
 class Account
-  def deposite(amount)
+  def credit(amount)
     @balance = amount
   end
 
