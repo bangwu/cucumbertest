@@ -1,3 +1,4 @@
+@admin
 Feature: Cash Withdraw
   Scenario: Successful withdraw from an account in credit
     Given I have credit $100 in my account

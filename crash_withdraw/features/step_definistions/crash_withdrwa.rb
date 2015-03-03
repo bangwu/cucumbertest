@@ -5,16 +5,13 @@ Given(/^I have credit \$(#{CAPYURE_A_NUMBER}) in my account$/) do |amount|
 end
 
 When(/^I withdraw \$(#{CAPYURE_A_NUMBER})$/) do |amount|
-  teller = Teller.new(cash_slot)
   teller.withdraw_from(my_account,amount)
 end
 
 Then(/^\$(#{CAPYURE_A_NUMBER}) should be dispensed$/) do |amount|
   expect(cash_slot.contents).to eql(amount)
-  
 end
 
 Then(/^the balance of my account should be \$(#{CAPYURE_A_NUMBER})$/) do |amount|
-#  pending # express the regexp above with the code you wish you had
   expect(@account.balance).to eql(amount)
 end
