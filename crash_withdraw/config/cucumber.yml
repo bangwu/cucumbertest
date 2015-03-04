@@ -1,0 +1,2 @@
+default: -f progress
+printout: -f progress -f html --out print.html -f rerun --out rerun.txt
